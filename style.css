@@ -1,0 +1,342 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a252f 0%, #2c3e50 100%);
+    min-height: 100vh;
+    color: #333;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 350px;
+    margin: 0 auto;
+    padding: 15px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 헤더 */
+.header {
+    text-align: center;
+    margin-bottom: 25px;
+    animation: fadeInDown 0.8s ease-out;
+}
+
+.header h1 {
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 300;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.header h1 i {
+    margin-right: 15px;
+    animation: bounce 2s infinite;
+}
+
+/* 날짜/시간 표시 */
+.datetime-display {
+    margin-top: 20px;
+    color: white;
+    text-align: center;
+    opacity: 0.9;
+}
+
+#currentDate {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+#currentTime {
+    font-size: 1.5rem;
+    font-weight: 900;
+    font-family: 'Courier New', monospace;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+    letter-spacing: 2px;
+}
+
+/* 검색 영역 */
+.search-container {
+    margin-bottom: 25px;
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+    position: relative;
+}
+
+.search-box {
+    background: white;
+    border-radius: 25px;
+    padding: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    position: absolute;
+    right: 8px;
+    top: 8px;
+}
+
+#cityInput {
+    width: 100%;
+    border: none;
+    padding: 15px 90px 15px 20px;
+    font-size: 1rem;
+    border-radius: 20px;
+    outline: none;
+    background: transparent;
+    box-sizing: border-box;
+}
+
+#cityInput::placeholder {
+    color: #999;
+}
+
+button {
+    border: none;
+    padding: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#searchBtn {
+    background: linear-gradient(135deg, #00cec9, #00b894);
+    color: white;
+}
+
+#locationBtn {
+    background: linear-gradient(135deg, #fd79a8, #e84393);
+    color: white;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* 날씨 컨테이너 */
+.weather-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 로딩 */
+.loading {
+    text-align: center;
+    color: white;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.loading i {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.loading p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* 날씨 카드 */
+.weather-card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 30px 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    text-align: center;
+    width: 100%;
+    animation: slideIn 0.8s ease-out;
+}
+
+.temperature-section {
+    margin-bottom: 30px;
+}
+
+/* 온도 */
+.temperature {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#temp {
+    font-size: 5rem;
+    font-weight: 100;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    line-height: 1;
+}
+
+/* 온도 단위 전환 버튼 스타일 제거됨 */
+
+/* 위치 정보 */
+.location-info {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.location-info h2 {
+    font-size: 1.5rem;
+    font-weight: 300;
+    opacity: 0.8;
+    margin: 0;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 12px 20px;
+    border-radius: 15px;
+    display: inline-block;
+}
+
+/* 날씨 설명 */
+.weather-description {
+    margin-bottom: 0;
+}
+
+.weather-description p {
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.weather-description p:first-child {
+    font-size: 2.1rem;
+    font-weight: 400;
+    text-transform: capitalize;
+    margin-bottom: 10px;
+}
+
+.weather-description p:last-child {
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+/* 날씨 세부사항 스타일 제거됨 - 이제 weather-description에 포함 */
+
+/* 에러 메시지 */
+.error-message {
+    text-align: center;
+    color: white;
+    background: rgba(231, 76, 60, 0.2);
+    border: 1px solid rgba(231, 76, 60, 0.3);
+    border-radius: 15px;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+    animation: shake 0.5s ease-out;
+}
+
+.error-message i {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    display: block;
+    color: #e74c3c;
+}
+
+.error-message p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* 애니메이션 */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .header h1 {
+        font-size: 2rem;
+    }
+    
+    #temp {
+        font-size: 3rem;
+    }
+} 
